@@ -1,0 +1,12 @@
+extends layout
+block content
+	h1 #{title}
+	form(method='POST', action='/articles/add')
+		#form-group
+			label Title
+			input.form-control.col-sm-12.col-md-6.col-lg-6(name='title',type='text')
+		#form-group
+			label Body
+			textarea.form-control.col-sm-12.col-md-6.col-lg-6(name='body')
+		br
+		input.btn.btn-primary(type='submit',value='Save')

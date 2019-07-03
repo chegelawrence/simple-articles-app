@@ -1,0 +1,42 @@
+doctype html
+html
+	head
+		title KnowledgeBase
+		link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet' href='/bower_components/font-awesome/web-fonts-with-css/css/fontawesome.min.css')
+		link(rel='stylesheet' href='/css/style.css')
+	body
+		nav.navbar.navbar-expand-md.navbar-dark.bg-dark.mb-4
+			a.navbar-brand(href='/',style='font-family:cursive;color:red;') KnowledgeBase
+			button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarCollapse', aria-controls='navbarCollapse', aria-expanded='false', aria-label='Toggle navigation')
+				span.navbar-toggler-icon
+			#navbarCollapse.collapse.navbar-collapse
+				ul.navbar-nav.mr-auto
+					li.nav-item
+						a.nav-link(href='/') Home
+					if user		
+						li.nav-item
+							a.nav-link(href='/articles/add') Add Article
+				ul.nav.navbar-nav.navbar-right
+					if user
+						li.nav-item
+							a.nav-link(href='#') Welcome #{user.username}
+						li.nav-item
+							a.nav-link(href='/users/logout') Logout
+					else
+						li.nav-item
+							a.nav-link(href='/users/register') Register
+						li.nav-item
+							a.nav-link(href='/users/login') Login
+					
+
+		.container
+			!= messages('message', locals)
+			block content
+			br
+			hr
+			footer
+				p Copyright &copy 2018
+		script(src='/bower_components/jquery/dist/jquery-3.2.1.min.js')
+		script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
+		script(src='/js/main.js')
